@@ -1,16 +1,19 @@
 class SimplePlayer:
     def __init__(self):
+        self.rival_loc = None
         self.loc = None
         self.board = None
         self.directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
     def set_game_params(self, board):
         self.board = board
-        for i, row in enumerate(board):
-            for j, val in enumerate(row):
+        # print("board is:",board)
+        for i, row in enumerate(board): # i is row num
+            for j, val in enumerate(row): # j is row num
                 if val == 1:
                     self.loc = (i, j)
-                    break
+                elif val == 2:
+                    self.rival_loc = (i, j)
 
     def state_score(self, board, loc):
         num_steps_available = 0
@@ -23,7 +26,7 @@ class SimplePlayer:
         if num_steps_available == 0:
             return -1
         else:
-            return 4 - num_steps_available
+            return 4 - num_steps_available # the score is higher if there is less steps available
 
     def count_ones(self, board):
         counter = 0

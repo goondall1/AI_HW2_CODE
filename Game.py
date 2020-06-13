@@ -72,7 +72,7 @@ class Game:
             first = 1
             second = 2
         if self.moves == 'regular':
-            # we are checkin if the current player is stack, if so, the other player wins.
+            # we are checkin if the current player is stuck, if so, the other player wins.
             player_loc = self.board.get_player_location(first)
             directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
             all_next_locations = [self.tup_add(player_loc, direction) for direction in directions]
